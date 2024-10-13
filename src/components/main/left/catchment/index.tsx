@@ -6,7 +6,6 @@ import './styles.scss';
 
 // Context imports
 import { useCircle } from '../../../context/circle';
-import { useStyleSheet } from '../../../context/filters/stylesheet';
 import { useCircleSizes } from '../../../context/sizes/circle';
 
 // Third-party imports
@@ -15,7 +14,6 @@ import * as d3 from 'd3';
 export const Catchment = ({ polygonArea, polygon }: any) => {
 	const { innerWidth, innerHeight } = useCircleSizes();
 	const { maxBound, radiusPosition } = useCircle();
-	const { fillColor } = useStyleSheet();
 
 	const r: any = d3.min([innerWidth / 2, innerHeight / 2])
 
@@ -32,7 +30,7 @@ export const Catchment = ({ polygonArea, polygon }: any) => {
 							cx={innerWidth / 2}
 							cy={ innerHeight / 2}
 							r={xScale(radiusPosition * 1000)}
-							fill={fillColor}
+							fill={"rgba(126, 126, 132, 0.4)"}
 						/>
 					</SVGWrapper>
 					<div className="distance-info">

@@ -3,7 +3,6 @@ import { useContext, createContext } from 'react';
 
 // Context imports
 import { useCircle } from '../../../circle';
-import { useStyleSheet } from '../../../filters/stylesheet';
 
 // Third-party imports
 // @ts-ignore
@@ -20,17 +19,12 @@ export const useCircleLayer = () => {
 
 export const CircleLayerProvider = ({children}: any) => {
 	const { circleGeometry } = useCircle();
-	const { fillColor } = useStyleSheet();
-
-	const circleFill = fillColor.replace("rgba(", "").replace(")", "").split(",")
-	
-	circleFill[3] = 20;
 
 	const circleLayer = circleGeometry &&
 		new GeoJsonLayer({
 			id: 'circle',
 			data: circleGeometry,
-			getFillColor: circleFill.map((item: any) => parseInt(item)),
+			getFillColor: [126, 126, 132, 80],
 			getLineColor: [126, 126, 132, 80],
 			parameters: { depthTest: false },
 			getLineWidth: 1,
