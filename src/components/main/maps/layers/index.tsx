@@ -1,6 +1,6 @@
 // Layer imports
 import { useParcels } from '../../../context/maps/layers/parcels';
-import { useCircle } from '../../../context/maps/layers/circle';
+import { useCircleLayer } from '../../../context/maps/layers/circle';
 
 // Third-party imports
 import { useControl } from 'react-map-gl';
@@ -15,7 +15,7 @@ const DeckGLOverlay = (props: DeckProps) => {
 
 export const Layers = () => {
 	const { parcelsLayer } = useParcels();
-	const { circleLayer } = useCircle();
+	const { circleLayer } = useCircleLayer();
 
 	const layers = [ 
 		circleLayer, 

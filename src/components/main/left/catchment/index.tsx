@@ -5,7 +5,7 @@ import { Slider } from './slider';
 import './styles.scss';
 
 // Context imports
-import { useCircleDimensions } from '../../../context/filters/dimensions/circle';
+import { useCircle } from '../../../context/circle';
 import { useStyleSheet } from '../../../context/filters/stylesheet';
 import { useCircleSizes } from '../../../context/sizes/left/circle';
 
@@ -14,7 +14,7 @@ import * as d3 from 'd3';
 
 export const Catchment = ({ polygonArea, polygon }: any) => {
 	const { innerWidth, innerHeight } = useCircleSizes();
-	const { maxBound, radiusPosition } = useCircleDimensions();
+	const { maxBound, radiusPosition } = useCircle();
 	const { fillColor } = useStyleSheet();
 
 	const r: any = d3.min([innerWidth / 2, innerHeight / 2])

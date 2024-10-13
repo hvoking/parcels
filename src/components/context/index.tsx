@@ -10,19 +10,20 @@ import { CircleProvider } from './circle';
 export const MainProvider = ({ children }: any) => {
 	return (
 		<FiltersProvider>
+		<CircleProvider>
 		<ApiProvider>
 		<SizesProvider>
 		<MapsProvider>
 		<StylesProvider>
-		<CircleProvider>
+		
 		<MaskProvider>
 			{children}
 		</MaskProvider>
-		</CircleProvider>
 		</StylesProvider>
 		</MapsProvider>
 		</SizesProvider>
 		</ApiProvider>
+		</CircleProvider>
 		</FiltersProvider>
 	)
 }

@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useCircleDimensions } from '../../filters/dimensions/circle';
+import { useCircle } from '../../circle';
 import { useGeo } from '../../filters/geo';
 
 const PolygonApiContext: React.Context<any> = createContext(null)
@@ -15,7 +15,7 @@ export const usePolygonApi = () => {
 
 export const PolygonApiProvider = ({children}: any) => {
 	const { cityName, placeCoordinates } = useGeo();
-	const { circleGeometry } = useCircleDimensions();
+	const { circleGeometry } = useCircle();
 
 	const [ polygonData, setPolygonData ] = useState<any>(null);
 
@@ -25,7 +25,7 @@ export const PolygonApiProvider = ({children}: any) => {
 				method: "POST",
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({ 
-					"polygon": JSON.stringify(circleGeometry.features[0].geometry),
+					"polygon": JSON.stringify(circleGeometry),
 			  		"longitude": JSON.stringify(placeCoordinates.longitude),
 					"latitude": JSON.stringify(placeCoordinates.latitude),
 					"schema": "limites",

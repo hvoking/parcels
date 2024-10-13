@@ -4,11 +4,11 @@ import { CircleLayerProvider } from './circle';
 
 export const LayersProvider = ({children}: any) => {
   return (
-    <CircleLayerProvider>
     <ParcelsProvider>
+    <CircleLayerProvider>
       {children}
-    </ParcelsProvider>
     </CircleLayerProvider>
+    </ParcelsProvider>
   )
 }
 

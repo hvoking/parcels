@@ -14,7 +14,12 @@ export const useCircle = () => {
 
 export const CircleProvider = ({children}: any) => {
 	const { marker } = useGeo();
-	const [ radius, setRadius ] = useState(1);
+	
+	const [ radiusPosition, setRadiusPosition ] = useState(1);
+	const [ circleRadius, setCircleRadius ] = useState(1);
+	
+	const minBound = 0.5;
+	const maxBound = 2;
 
 	const createCircle = (center: any, radiusInKm: any, points: any) => {
 	    if(!points) points = 64;
@@ -43,10 +48,15 @@ export const CircleProvider = ({children}: any) => {
 	    };
 	};
 
-	const circleGeometry: any = createCircle([marker.longitude, marker.latitude], radius, 64);
+	const circleGeometry: any = createCircle([marker.longitude, marker.latitude], circleRadius, 64);
 
 	return (
-		<CircleContext.Provider value={{ circleGeometry, setRadius }}>
+		<CircleContext.Provider value={{ 
+			circleGeometry,
+			circleRadius, setCircleRadius,
+			radiusPosition, setRadiusPosition,
+			maxBound, minBound
+		}}>
 			{children}
 		</CircleContext.Provider>
 	)
