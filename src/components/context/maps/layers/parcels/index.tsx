@@ -2,12 +2,11 @@
 import { useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useParcelsApi } from '../../../api/geom/parcels';
+import { useParcelsApi } from '../../../api/parcels';
 import { useGoogleReverseApi } from '../../../api/google/reverse';
 import { useGeo } from '../../../filters/geo';
 import { useParcelDimensions } from '../../../filters/dimensions/parcel';
 import { useBuiltDimensions } from '../../../filters/dimensions/built';
-import { useVisibility } from '../../../filters/visibility';
 
 // Third party imports
 // @ts-ignore
@@ -26,7 +25,6 @@ export const ParcelsProvider = ({children}: any) => {
 	const { parcelAreaFrom, parcelAreaTo } = useParcelDimensions();
 	const { builtAreaFrom, builtAreaTo } = useBuiltDimensions();
 	const { parcelsProperties, setParcelLongitude, setParcelLatitude } = useGoogleReverseApi();
-	const { activeLots } = useVisibility();
 
 	const onClick = (e: any) => { 
 		const parcelId = e.object.id;
@@ -82,7 +80,6 @@ export const ParcelsProvider = ({children}: any) => {
 					]},
 				onClick: onClick,
 				parameters: { depthTest: false },
-				visible: activeLots
 			});
 	return (
 		<ParcelsContext.Provider value={{ parcelsLayer }}>

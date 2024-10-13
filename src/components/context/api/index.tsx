@@ -1,19 +1,19 @@
 // App imports
-import { ParcelApiProvider } from './parcel';
+import { ZoneApiProvider } from './zone';
 import { GoogleApiProvider } from './google';
-import { GeomApiProvider } from './geom';
+import { ParcelsApiProvider } from './parcels';
 import { PolygonApiProvider } from './polygon';
 
 export const ApiProvider = ({children}: any) => {
   return (
     <PolygonApiProvider>
-    <GeomApiProvider>
-    <ParcelApiProvider>
+    <ParcelsApiProvider>
+    <ZoneApiProvider>
     <GoogleApiProvider>
       {children}
     </GoogleApiProvider>
-    </ParcelApiProvider>
-    </GeomApiProvider>
+    </ZoneApiProvider>
+    </ParcelsApiProvider>
     </PolygonApiProvider>
   )
 }

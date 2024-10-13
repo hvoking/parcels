@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { usePolygonApi } from '../../../api/polygon';
+import { usePolygonApi } from '../polygon';
 
 const ParcelsApiContext: React.Context<any> = createContext(null)
 
