@@ -15,11 +15,11 @@ export const useCircle = () => {
 export const CircleProvider = ({children}: any) => {
 	const { marker } = useGeo();
 	
-	const [ radiusPosition, setRadiusPosition ] = useState(1);
-	const [ circleRadius, setCircleRadius ] = useState(1);
+	const [ radiusPosition, setRadiusPosition ] = useState(0.5);
+	const [ circleRadius, setCircleRadius ] = useState(0.5);
 	
-	const minBound = 0.5;
-	const maxBound = 2;
+	const minBound = 0.1;
+	const maxBound = 1;
 
 	const createCircle = (center: any, radiusInKm: any, points: any) => {
 	    if(!points) points = 64;

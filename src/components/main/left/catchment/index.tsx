@@ -7,7 +7,7 @@ import './styles.scss';
 // Context imports
 import { useCircle } from '../../../context/circle';
 import { useStyleSheet } from '../../../context/filters/stylesheet';
-import { useCircleSizes } from '../../../context/sizes/left/circle';
+import { useCircleSizes } from '../../../context/sizes/circle';
 
 // Third-party imports
 import * as d3 from 'd3';
@@ -38,7 +38,7 @@ export const Catchment = ({ polygonArea, polygon }: any) => {
 					<div className="distance-info">
 						<div>
 							<div>
-								{(Math.round(radiusPosition * 100 * 10) / 10).toFixed(1)}
+								{(Math.round(radiusPosition* 10) / 10).toFixed(1)}
 								<span style={{fontSize: "0.8em"}}> km</span>
 							</div>
 
@@ -46,7 +46,7 @@ export const Catchment = ({ polygonArea, polygon }: any) => {
 						</div>
 						<div>
 							<div>
-								{Math.round(radiusPosition * 100 * 12)}
+								{Math.round(radiusPosition * 12)}
 								<span style={{fontSize: "0.8em"}}> min</span>
 							</div>
 							<div className="subtitle-style">walk time</div>

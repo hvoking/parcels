@@ -8,7 +8,7 @@ import { Wrapper } from './wrapper';
 
 // Context imports
 import { useParcelDimensions } from '../../../../context/filters/dimensions/parcel';
-import { useParcelSliderSizes } from '../../../../context/sizes/left/slider/parcel';
+import { useParcelSliderSizes } from '../../../../context/sizes/slider/parcel';
 
 import * as d3 from 'd3';
 

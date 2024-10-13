@@ -6,7 +6,7 @@ import { Wrapper } from './wrapper';
 
 // Context imports
 import { useBuiltDimensions } from '../../../../context/filters/dimensions/built';
-import { useBarsSizes } from '../../../../context/sizes/left/bars';
+import { useBarsSizes } from '../../../../context/sizes/bars';
 
 import * as d3 from 'd3';
 

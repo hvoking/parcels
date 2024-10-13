@@ -1,18 +1,20 @@
 // App imports
-import { LeftSizesProvider } from './left';
-import { RightSizesProvider } from './right';
-import { MapSizesProvider } from './maps';
+import { SliderSizesProvider } from './slider';
+import { BarsSizesProvider } from './bars';
+import { CircleSizesProvider } from './circle';
+import { RadiusSizesProvider } from './radius';
 
 export const SizesProvider = ({children}: any) => {
   return (
-    
-    <LeftSizesProvider>
-    <RightSizesProvider>
-    <MapSizesProvider>
+    <CircleSizesProvider>
+    <SliderSizesProvider>
+    <BarsSizesProvider>
+    <RadiusSizesProvider>
       {children}
-    </MapSizesProvider>
-    </RightSizesProvider>
-    </LeftSizesProvider>
+    </RadiusSizesProvider>
+    </BarsSizesProvider>
+    </SliderSizesProvider>
+    </CircleSizesProvider>
   )
 }
 
