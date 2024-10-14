@@ -2,15 +2,12 @@
 import { useCallback } from 'react';
 
 // App imports
-import { Pin } from './pin';
 import { Controllers } from './controllers';
 import { Wrapper } from './wrapper'
 import { Tiles } from './tiles';
 import { Avatar } from './avatar';
 import { Mask } from './mask';
-
-// Layers imports
-import { Layers } from './layers';
+import { Circle } from './circle';
 
 // Context imports
 import { useGeo } from '../../context/filters/geo';
@@ -47,9 +44,8 @@ export const Maps = () => {
         onTouchEnd={onDragEnd}
         dragPan={!isDragging}
       >
-        <Layers/>
         <Controllers/>
-        <Pin/>
+        <Circle/>
         <Tiles/>
         <Avatar/>
         <Mask/>
