@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../../../context/filters/geo';
+import { useGeo } from '../../../geo';
 
 const GoogleDetailsApiContext: React.Context<any> = createContext(null)
 

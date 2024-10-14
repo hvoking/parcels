@@ -2,7 +2,7 @@
 import { useState, useEffect, useMemo, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../filters/geo';
+import { useGeo } from '../../geo';
 import { useCircle } from '../circle';
 
 // Third-party imports
@@ -32,17 +32,15 @@ export const MaskProvider = ({children}: any) => {
 
 	    map.on('data', onData);
 
-	    return () => {
-	        map.off('data', onData);
-	    };
+	    return () => {map.off('data', onData)};
+
 	}, [ mapRef.current ]);
 
 	useEffect(() => {
 		const map = mapRef.current;
-
 		if (!map) return;
-		
-		setMapFeatures(map.queryRenderedFeatures());
+		const features = map.queryRenderedFeatures();
+		setMapFeatures(features);
 	}, [ activeFeatures, mapRef.current ]);
 
 	const maskProperties = useMemo(() => {
@@ -52,6 +50,7 @@ export const MaskProvider = ({children}: any) => {
 	            const featureCentroid = turf.centroid(featureGeometry);
 	            return turf.booleanPointInPolygon(featureCentroid, circleGeometry);
 	        }
+	    return false
 	    });
 	}, [ mapFeatures, circleGeometry ]);
 

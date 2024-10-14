@@ -2,7 +2,7 @@
 import { useState, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../filters/geo';
+import { useGeo } from '../../geo';
 
 const CircleContext: React.Context<any> = createContext(null);
 

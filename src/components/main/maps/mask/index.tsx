@@ -1,7 +1,7 @@
 // Context imports
 import { useMask } from '../../../context/maps/mask';
-import { useParcelDimensions } from '../../../context/filters/dimensions/parcel';
-import { useBuiltDimensions } from '../../../context/filters/dimensions/built';
+import { useParcelDimensions } from '../../../context/dimensions/parcel';
+import { useBuiltDimensions } from '../../../context/dimensions/built';
 
 // Third party imports
 import { Source, Layer } from 'react-map-gl';

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Context imports
-import { useGeo } from '../../../context/filters/geo';
+import { useGeo } from '../../../context/geo';
 
 // Third-party imports
 import { Marker } from 'react-map-gl';

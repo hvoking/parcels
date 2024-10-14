@@ -5,7 +5,7 @@ import { Foreground } from './foreground';
 import { Wrapper } from './wrapper';
 
 // Context imports
-import { useBuiltDimensions } from '../../../../context/filters/dimensions/built';
+import { useBuiltDimensions } from '../../../../context/dimensions/built';
 import { useBarsSizes } from '../../../../context/sizes/bars';
 
 import * as d3 from 'd3';

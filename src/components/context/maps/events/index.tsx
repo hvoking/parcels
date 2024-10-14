@@ -2,7 +2,7 @@
 import { useState, useCallback, useContext, createContext } from 'react';
 
 // App imports
-import { useGeo } from '../../filters/geo';
+import { useGeo } from '../../geo';
 
 const EventsContext: React.Context<any> = createContext(null);
 

@@ -1,20 +1,20 @@
 // Context imports
-import { useParcelsApi } from '../../../../../context/api/parcels';
+import { useMask } from '../../../../../context/maps/mask';
 
 // Third party imports
 import * as d3 from 'd3';
 
 export const Bars = ({ xScale, minBound, maxBound, innerWidth, innerHeight }: any) => {
-    const { parcelsData } = useParcelsApi();
-    if (!parcelsData) return <></>;
-    const parcelAreas = parcelsData.filter((item: any) => item.area < maxBound);
+    const { maskProperties } = useMask();
+    if (!maskProperties) return <></>;
+    const parcelAreas = maskProperties.filter((item: any) => item.properties.area_carto < maxBound);
 
     const getCountByRange = (areasArray: any, lowerBound: any, upperBound: any, step: number) => {
       let counts: any = {};
       let currentRange = lowerBound;
       while (currentRange <= upperBound) {
         const previousRange = currentRange - step;
-        const filterArray = areasArray.filter((item: any) => previousRange < item.area && item.area < currentRange);
+        const filterArray = areasArray.filter((item: any) => previousRange < item.properties.area_carto && item.properties.area_carto < currentRange);
         const areasArrayLength = filterArray.length;
 
         const freeTerrainArray = filterArray.filter((item: any) => item.constructed_area === 0);

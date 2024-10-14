@@ -14,12 +14,10 @@ export const Area = () => {
 		<div className="area-filter-wrapper">
 			<Title/>
 			<div className="area-filter">
-				
 			  <Graphics 
 			    activeForeground={activeForeground} 
 			    setActiveForeground={setActiveForeground}
 			  />
-			  
 			  <div style={{transform: "translateY(-8px)"}}>
 				  <Slider
 				    activeForeground={activeForeground} 

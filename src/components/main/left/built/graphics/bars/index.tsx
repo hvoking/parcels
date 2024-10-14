@@ -1,15 +1,22 @@
 // Context imports
 import { useParcelsApi } from '../../../../../context/api/parcels';
+import { useMask } from '../../../../../context/maps/mask';
 
 // Third party imports
 import * as d3 from 'd3';
 
 export const Bars = ({ xScale, minBound, maxBound, innerWidth, innerHeight }: any) => {
-    const { parcelsData } = useParcelsApi();
+    const { maskProperties } = useMask();
 
-    if (!parcelsData) return <></>;
-
-    const parcelAreas = parcelsData.map((item: any) => item.constructed_area < maxBound && item.constructed_area);
+    const filteredAreas = maskProperties.reduce((sum: any, item: any) => {
+        const constructedArea = item.properties.constructed_area;
+        if (constructedArea) {
+            const constructedAreaList = constructedArea.replace(/[{}]/g, '').split(',');
+            const sumConstructedArea = constructedAreaList.reduce((total: any, num: any) => total + parseFloat(num), 0);
+            sum.push(sumConstructedArea);
+        }
+        return sum
+    }, []);
 
     const countAreas = (areas: any, lowerBound: any, upperBound: any, step: number) => {
       let counts: any = {};
@@ -24,7 +31,7 @@ export const Bars = ({ xScale, minBound, maxBound, innerWidth, innerHeight }: an
     }
 
     const step = 30;
-    const areasCount = countAreas(parcelAreas, minBound, maxBound, step);
+    const areasCount = countAreas(filteredAreas, minBound, maxBound, step);
 
     const countValues: number[] = Object.values(areasCount);
     const minCount: any = d3.min(countValues);

@@ -10,7 +10,7 @@ import { Mask } from './mask';
 import { Circle } from './circle';
 
 // Context imports
-import { useGeo } from '../../context/filters/geo';
+import { useGeo } from '../../context/geo';
 import { useEvents } from '../../context/maps/events';
 
 // Third-party imports

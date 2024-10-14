@@ -1,12 +1,14 @@
 // Context imports
-import { FiltersProvider } from './filters';
+import { GeoProvider } from './geo';
+import { DimensionsProvider } from './dimensions';
 import { SizesProvider } from './sizes';
 import { ApiProvider } from './api';
 import { MapsProvider } from './maps';
 
 export const MainProvider = ({ children }: any) => {
 	return (
-		<FiltersProvider>
+		<GeoProvider>
+    	<DimensionsProvider>
 		<MapsProvider>
 		<ApiProvider>
 		<SizesProvider>
@@ -14,7 +16,8 @@ export const MainProvider = ({ children }: any) => {
 		</SizesProvider>
 		</ApiProvider>
 		</MapsProvider>
-		</FiltersProvider>
+		</DimensionsProvider>
+    	</GeoProvider>
 	)
 }
 
