@@ -7,7 +7,7 @@ export const ReCenter = ({ setViewport, viewport, placeCoordinates }: any) => {
 	return (
 		<img 
 			className="recenter-image" 
-			src={process.env.PUBLIC_URL + "/static/components/maps/reCenter.svg"} 
+			src={process.env.PUBLIC_URL + "/static/icons/reCenter.svg"} 
 			alt="reCenter" 
 			onClick={reCenter}
 		/>

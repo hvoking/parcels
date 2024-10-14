@@ -9,7 +9,7 @@ export const Location = () => {
 		<div className="location-wrapper">
 				<img 
 					style={{width: "10px"}}
-					src={process.env.PUBLIC_URL + "/static/components/maps/marker.svg"} 
+					src={process.env.PUBLIC_URL + "/static/icons/pin.svg"} 
 					alt="pin-location"
 			     />
 				<div>{currentAddress}</div>

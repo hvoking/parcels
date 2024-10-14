@@ -93,7 +93,7 @@ export const Search = ({ activeSearch, setActiveSearch }: any) => {
 		<div style={{display: "flex"}}>
 			<img 
 				className="search-icon"
-				src={process.env.PUBLIC_URL + "/static/components/search/search_icon.svg"} 
+				src={process.env.PUBLIC_URL + "/static/icons/search.svg"} 
 				alt="search-icon"
 				onClick={() => setActiveSearch((prev: boolean) => !prev)}
 			/>
@@ -113,7 +113,7 @@ export const Search = ({ activeSearch, setActiveSearch }: any) => {
 						<div className="cancel-cross-wrapper">
 							<img
 								className="cancel-cross"
-								src={process.env.PUBLIC_URL + "/static/components/search/cancel_search.svg"} 
+								src={process.env.PUBLIC_URL + "/static/icons/cancel.svg"} 
 								alt="search-icon"
 								onClick={cleanSuggestions}
 							/>

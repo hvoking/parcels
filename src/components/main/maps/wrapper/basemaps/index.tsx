@@ -17,7 +17,7 @@ export const Basemaps = () => {
 		<div className="basemaps-wrapper">
 			<img 
 				className="basemaps-image"
-				src={process.env.PUBLIC_URL + "/static/components/maps/globe.svg"}
+				src={process.env.PUBLIC_URL + "/static/icons/globe.svg"}
 				alt="globe"
 				onClick={onClick}
 			/>
