@@ -1,11 +1,11 @@
 .zone-wrapper {
 	display: grid;
-	grid-template-rows: min-content auto;
+	grid-template-rows: min-content min-content;
 	background-color: rgba(32, 32, 43, 1);
-	border-radius: 20px;
 	padding-top: 5px;
 	padding-bottom: 10px;
 	grid-gap: 10px;
+	border-radius: 10px;
 }
 .zone {
 	display: flex;

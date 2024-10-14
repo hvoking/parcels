@@ -15,7 +15,7 @@ export const Zone = () => {
 	return (
 		<div className="zone-wrapper">
 			<div className="title-wrapper-style">
-				Parcel regulations
+				Zone regulations
 			</div>
 			<div className="zone">
 				<div>
