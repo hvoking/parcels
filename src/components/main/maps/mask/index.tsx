@@ -1,17 +1,21 @@
 // Context imports
 import { useMask } from '../../../context/mask';
+import { useParcelDimensions } from '../../../context/filters/dimensions/parcel';
+import { useBuiltDimensions } from '../../../context/filters/dimensions/built';
 
 // Third party imports
 import { Source, Layer } from 'react-map-gl';
 
-const getColor = (item: any) => {
+const getColor = (item: any, opacity: any) => {
 	const { r, g, b, a } = item;
-	const color = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${a})`;
+	const color = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${opacity})`;
 	return color
 }
 
 export const Mask = () => {
 	const { maskProperties } = useMask();
+	const { parcelAreaFrom, parcelAreaTo } = useParcelDimensions();
+	const { builtAreaFrom, builtAreaTo } = useBuiltDimensions();
 
 	if (!maskProperties) return <></>
 
@@ -22,7 +26,21 @@ export const Mask = () => {
     });
 
 	const updatedFeatures = features.map((item: any) => {
-		const currentColor = getColor(item.layer.paint["fill-color"]);
+		const area = item.properties.area_carto;
+
+		const constructedArea = item.properties.constructed_area
+		const constructedAreaList = constructedArea ? constructedArea.replace(/[{}]/g, '').split(',') : [];
+		const sumConstructedArea = constructedAreaList.reduce((total: any, num: any) => total + parseFloat(num), 0);
+		
+		const opacity = 
+			area > parcelAreaFrom && 
+			area < parcelAreaTo &&
+			sumConstructedArea >= builtAreaFrom && 
+			sumConstructedArea <= builtAreaTo
+			? 1 : 0;
+
+		const currentColor = getColor(item.layer.paint["fill-color"], opacity);
+
 		return ({
 			type: "Feature",
 			geometry: item.geometry,
@@ -45,9 +63,9 @@ export const Mask = () => {
 	          type="fill-extrusion"
 	          paint={{
 	            'fill-extrusion-color': ['get', 'fill-color'],
-	            'fill-extrusion-height': ['*', ['get', 'indice_fin'], 1000],
+	            'fill-extrusion-height': ['get', 'geometria'],
 	            'fill-extrusion-base': 0,
-	            'fill-extrusion-opacity': 0.9
+	            'fill-extrusion-opacity': 0.5
 	          }}
 	        />
 	      </Source>
