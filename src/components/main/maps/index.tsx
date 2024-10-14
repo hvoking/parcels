@@ -11,7 +11,7 @@ import { Circle } from './circle';
 
 // Context imports
 import { useGeo } from '../../context/filters/geo';
-import { useEvents } from '../../context/events';
+import { useEvents } from '../../context/maps/events';
 
 // Third-party imports
 import { Map } from 'react-map-gl';

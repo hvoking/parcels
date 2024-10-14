@@ -1,5 +1,5 @@
 // Context imports
-import { useMask } from '../../../context/mask';
+import { useMask } from '../../../context/maps/mask';
 import { useParcelDimensions } from '../../../context/filters/dimensions/parcel';
 import { useBuiltDimensions } from '../../../context/filters/dimensions/built';
 

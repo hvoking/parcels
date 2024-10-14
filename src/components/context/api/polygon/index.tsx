@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useCircle } from '../../circle';
+import { useCircle } from '../../maps/circle';
 import { useGeo } from '../../filters/geo';
 
 const PolygonApiContext: React.Context<any> = createContext(null)
