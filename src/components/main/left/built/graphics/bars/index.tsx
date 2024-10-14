@@ -1,5 +1,4 @@
 // Context imports
-import { useParcelsApi } from '../../../../../context/api/parcels';
 import { useMask } from '../../../../../context/maps/mask';
 
 // Third party imports
