@@ -1,5 +1,5 @@
 // Context imports
-import { MapsProvider } from './maps';
+import { EventsProvider } from './events';
 import { FiltersProvider } from './filters';
 import { SizesProvider } from './sizes';
 import { ApiProvider } from './api';
@@ -13,14 +13,13 @@ export const MainProvider = ({ children }: any) => {
 		<CircleProvider>
 		<ApiProvider>
 		<SizesProvider>
-		<MapsProvider>
+		<EventsProvider>
 		<StylesProvider>
-		
 		<MaskProvider>
 			{children}
 		</MaskProvider>
 		</StylesProvider>
-		</MapsProvider>
+		</EventsProvider>
 		</SizesProvider>
 		</ApiProvider>
 		</CircleProvider>

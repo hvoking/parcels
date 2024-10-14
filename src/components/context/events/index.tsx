@@ -2,17 +2,17 @@
 import { useState, useCallback, useContext, createContext } from 'react';
 
 // App imports
-import { useGeo } from '../../filters/geo';
+import { useGeo } from '../filters/geo';
 
-const MouseEventsContext: React.Context<any> = createContext(null);
+const EventsContext: React.Context<any> = createContext(null);
 
-export const useMouseEvents = () => {
+export const useEvents = () => {
 	return (
-		useContext(MouseEventsContext)
+		useContext(EventsContext)
 	)
 }
 
-export const MouseEventsProvider = ({children}: any) => {
+export const EventsProvider = ({children}: any) => {
 		const { mapRef, marker, setMarker } = useGeo();
 		
 		const [ isDragging, setIsDragging ] = useState(false);
@@ -61,15 +61,15 @@ export const MouseEventsProvider = ({children}: any) => {
 	    }, []);
 
 	return (
-		<MouseEventsContext.Provider value={{
+		<EventsContext.Provider value={{
 			isDragging,
 			onDragStart,
 			onMouseMove,
 			onDragEnd,
 		}}>
 			{children}
-		</MouseEventsContext.Provider>
+		</EventsContext.Provider>
 	)
 }
 
-MouseEventsContext.displayName = "MouseEventsContext";
+EventsContext.displayName = "EventsContext";

@@ -11,7 +11,7 @@ import { Circle } from './circle';
 
 // Context imports
 import { useGeo } from '../../context/filters/geo';
-import { useMouseEvents } from '../../context/maps/events';
+import { useEvents } from '../../context/events';
 
 // Third-party imports
 import { Map } from 'react-map-gl';
@@ -19,7 +19,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 export const Maps = () => {
   const { mapRef, basemap, viewport, setViewport } = useGeo();
-  const { isDragging, onDragStart, onMouseMove, onDragEnd } = useMouseEvents();
+  const { isDragging, onDragStart, onMouseMove, onDragEnd } = useEvents();
 
   const onDblClick = useCallback((e: any) => {
     const lng = e.lngLat.lng;
