@@ -6,11 +6,11 @@ import { Suggestions } from './suggestions';
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../../../context/geo';
+import { useMapbox } from '../../../../context/maps/mapbox';
 import { useGoogleSearchApi } from '../../../../context/api/google/search';
 
 export const Search = ({ activeSearch, setActiveSearch }: any) => {
-	const { setPlaceId } = useGeo();
+	const { setPlaceId } = useMapbox();
 	const { googleSearchData, searchText, setSearchText } = useGoogleSearchApi();
 
 	const [ suggestionIndex, setSuggestionIndex ] = useState(0);

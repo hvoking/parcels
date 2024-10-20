@@ -2,10 +2,10 @@
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../../../context/geo';
+import { useMapbox } from '../../../../context/maps/mapbox';
 
 export const Basemaps = () => {
-	const { basemap, setBasemap } = useGeo();
+	const { basemap, setBasemap } = useMapbox();
 
 	const onClick = () => {
 		basemap === "mapbox://styles/hvoking/clrwzn1jo015q01nl53664m2c" ?

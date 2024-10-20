@@ -4,15 +4,15 @@ import { useState, useRef, useEffect, useContext, createContext } from 'react';
 // App imports
 import * as Locations from './locations';
 
-const GeoContext: React.Context<any> = createContext(null);
+const MapboxContext: React.Context<any> = createContext(null);
 
-export const useGeo = () => {
+export const useMapbox = () => {
 	return (
-		useContext(GeoContext)
+		useContext(MapboxContext)
 	)
 }
 
-export const GeoProvider = ({children}: any) => {
+export const MapboxProvider = ({children}: any) => {
 	const [ basemap, setBasemap ] = useState("mapbox://styles/hvoking/clrwzn1jo015q01nl53664m2c");
 	const [ cityName, setCityName ] = useState("blumenau")
 	const [ cityId, setCityId ] = useState<any>(37);
@@ -52,7 +52,7 @@ export const GeoProvider = ({children}: any) => {
 	}, [ viewport ]);
 
 	return (
-		<GeoContext.Provider value={{
+		<MapboxContext.Provider value={{
 			mapRef,
 			basemap, setBasemap,
 			viewport, setViewport,
@@ -64,8 +64,8 @@ export const GeoProvider = ({children}: any) => {
 			placeId, setPlaceId
 		}}>
 			{children}
-		</GeoContext.Provider>
+		</MapboxContext.Provider>
 	)
 }
 
-GeoContext.displayName = "GeoContext";
+MapboxContext.displayName = "MapboxContext";

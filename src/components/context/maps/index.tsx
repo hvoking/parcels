@@ -3,9 +3,11 @@ import { StylesProvider } from './styles';
 import { MaskProvider } from './mask';
 import { CircleProvider } from './circle';
 import { EventsProvider } from './events';
+import { MapboxProvider } from './mapbox';
 
 export const MapsProvider = ({ children }: any) => {
 	return (
+		<MapboxProvider>
 		<CircleProvider>
 		<EventsProvider>
 		<StylesProvider>
@@ -15,6 +17,7 @@ export const MapsProvider = ({ children }: any) => {
 		</StylesProvider>
 		</EventsProvider>
 		</CircleProvider>
+		</MapboxProvider>
 	)
 }
 

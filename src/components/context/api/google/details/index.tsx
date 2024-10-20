@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../../geo';
+import { useMapbox } from '../../../maps/mapbox';
 
 const GoogleDetailsApiContext: React.Context<any> = createContext(null)
 
@@ -13,7 +13,7 @@ export const useGoogleDetailsApi = () => {
 }
 
 export const GoogleDetailsApiProvider = ({children}: any) => {
-	const { placeId, setPlaceCoordinates } = useGeo();
+	const { placeId, setPlaceCoordinates } = useMapbox();
 	const [ googleDetailsData, setGoogleDetailsData ] = useState<any>(null);
 	
 	useEffect(() => {

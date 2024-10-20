@@ -2,7 +2,7 @@
 import { useState, useCallback, useContext, createContext } from 'react';
 
 // App imports
-import { useGeo } from '../../geo';
+import { useMapbox } from '../mapbox';
 
 const EventsContext: React.Context<any> = createContext(null);
 
@@ -13,7 +13,7 @@ export const useEvents = () => {
 }
 
 export const EventsProvider = ({children}: any) => {
-		const { mapRef, marker, setMarker } = useGeo();
+		const { mapRef, marker, setMarker } = useMapbox();
 		
 		const [ isDragging, setIsDragging ] = useState(false);
 		const [ dragOffset, setDragOffset ] = useState({ x: 0, y: 0 });

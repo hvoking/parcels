@@ -3,13 +3,13 @@ import { ReCenter } from './reCenter';
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../../context/geo';
+import { useMapbox } from '../../../context/maps/mapbox';
 
 // Third party imports
 import { NavigationControl } from 'react-map-gl';
 
 export const Controllers = () => {
-	const { viewport, setViewport, placeCoordinates } = useGeo();
+	const { viewport, setViewport, placeCoordinates } = useMapbox();
 
 	return (
 		<>
