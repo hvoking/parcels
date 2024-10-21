@@ -30,8 +30,8 @@ export const Maps = () => {
   }, []); 
 
   const onMapLoad = () => {
-    const map = mapRef.current?.getMap(); // Access the Mapbox GL map directly
-
+    const map = mapRef.current?.getMap();
+    
     if (map) {
       map.addSource('eraser', {
         type: 'geojson',
