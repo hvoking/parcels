@@ -10,7 +10,7 @@ import { Legend } from './legend';
 import { Wrapper } from './wrapper';
 
 // Context imports
-import { useCircle } from '../../../../context/maps/circle';
+import { useCircle } from '../../../../context/filters/circle';
 import { useRadiusSizes } from '../../../../context/sizes/radius';
 
 // Third-party imports

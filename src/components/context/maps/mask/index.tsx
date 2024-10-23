@@ -2,8 +2,8 @@
 import { useState, useEffect, useMemo, useContext, createContext } from 'react';
 
 // Context imports
-import { useMapbox } from '../../maps/mapbox';
-import { useCircle } from '../circle';
+import { useMapbox } from '../../filters/mapbox';
+import { useCircle } from '../../filters/circle';
 
 // Third-party imports
 import * as turf from '@turf/turf';

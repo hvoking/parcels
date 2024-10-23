@@ -2,7 +2,7 @@
 import './styles.scss';
 
 // Context imports
-import { useMapbox } from '../../../../context/maps/mapbox';
+import { useMapbox } from '../../../../context/filters/mapbox';
 
 export const Basemaps = () => {
 	const { basemap, setBasemap } = useMapbox();

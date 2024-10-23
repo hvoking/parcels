@@ -3,7 +3,7 @@ import { ReCenter } from './reCenter';
 import './styles.scss';
 
 // Context imports
-import { useMapbox } from '../../../context/maps/mapbox';
+import { useMapbox } from '../../../context/filters/mapbox';
 
 // Third party imports
 import { NavigationControl } from 'react-map-gl';

@@ -2,7 +2,7 @@
 import { useState, useCallback, useContext, createContext } from 'react';
 
 // App imports
-import { useMapbox } from '../mapbox';
+import { useMapbox } from '../../filters/mapbox';
 
 const EventsContext: React.Context<any> = createContext(null);
 

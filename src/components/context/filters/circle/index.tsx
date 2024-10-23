@@ -2,7 +2,7 @@
 import { useState, useContext, createContext } from 'react';
 
 // Context imports
-import { useMapbox } from '../../maps/mapbox';
+import { useMapbox } from '../mapbox';
 
 // Third-party libraries
 import * as turf from '@turf/turf';
