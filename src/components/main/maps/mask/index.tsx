@@ -6,10 +6,17 @@ import { useBuiltAreas } from '../../../context/filters/areas/built';
 // Third party imports
 import { Source, Layer } from 'react-map-gl';
 
-const getColor = (item: any, opacity: any) => {
-	const { r, g, b, a } = item;
-	const color = `rgba(${r * 255}, ${g * 255}, ${b * 255}, ${opacity})`;
-	return color
+const hexToRgba = (hex: any, opacity: any) => {
+	if (hex) {
+		hex = hex.replace(/^#/, '');
+
+		let r = parseInt(hex.substring(0, 2), 16);
+		let g = parseInt(hex.substring(2, 4), 16);
+		let b = parseInt(hex.substring(4, 6), 16);
+
+		return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+	}
+	return "rgba(0, 0, 0, 0)"
 }
 
 export const Mask = () => {
@@ -19,34 +26,43 @@ export const Mask = () => {
 
 	if (!maskProperties) return <></>
 
-	// Filter by fill color
 	const features = maskProperties.filter((item: any) => {
-        const stringList = Object.keys(item.layer.paint);
-        return stringList.includes("fill-color");
+        const paint = Object.keys(item.layer.paint);
+        const isFillLayer = paint.includes("fill-color");
+        return isFillLayer;
     });
 
 	const updatedFeatures = features.map((item: any) => {
 		const area = item.properties.area_carto;
+		const constructedArea = item.properties.constructed_area;
 
-		const constructedArea = item.properties.constructed_area
-		const constructedAreaList = constructedArea ? constructedArea.replace(/[{}]/g, '').split(',') : [];
-		const sumConstructedArea = constructedAreaList.reduce((total: any, num: any) => total + parseFloat(num), 0);
+		const constructedAreaArray = 
+			constructedArea ? 
+			constructedArea.replace(/[{}]/g, '').split(',') : 
+			[];
+		
+		const sumConstructedArea = 
+			constructedAreaArray.reduce((total: any, num: any) => 
+				total + parseFloat(num), 
+			0);
 		
 		const opacity = 
 			area > parcelAreaFrom && 
 			area < parcelAreaTo &&
 			sumConstructedArea >= builtAreaFrom && 
 			sumConstructedArea <= builtAreaTo
-			? 1 : 0;
+			? "1" : "0";
 
-		const currentColor = getColor(item.layer.paint["fill-color"], opacity);
+		const currentColor = hexToRgba(item.properties["zone_color"], opacity);
+		const currentHeight = item.properties["height"] ? parseInt(item.properties["height"]) : 60;
 
 		return ({
 			type: "Feature",
 			geometry: item.geometry,
 			properties: {
 				...item.properties, 
-				'fill-color': currentColor
+				'fill-color': currentColor,
+				'current-height': currentHeight
 			}
 		})
 	});
@@ -57,13 +73,13 @@ export const Mask = () => {
     };
 
 	return (
-		<Source id="polygon-data" type="geojson" data={geoJsonData}>
+		<Source id="polygon-data" type="geojson" data={ geoJsonData }>
 	        <Layer
 	          id="extruded-polygons"
 	          type="fill-extrusion"
 	          paint={{
 	            'fill-extrusion-color': ['get', 'fill-color'],
-	            'fill-extrusion-height': ['get', 'geometria'],
+	            'fill-extrusion-height': ['get', 'current-height'],
 	            'fill-extrusion-base': 0,
 	            'fill-extrusion-opacity': 0.5
 	          }}
