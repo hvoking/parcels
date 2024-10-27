@@ -3,30 +3,52 @@ import { useMemo } from 'react';
 
 // Context imports
 import { useMask } from '../../../context/maps/mask';
+import { useParcelAreas } from '../../../context/filters/areas/parcel';
+import { useBuiltAreas } from '../../../context/filters/areas/built';
 
 // Third-party imports
 import * as turf from '@turf/turf';
 import { Source, Layer } from 'react-map-gl';
 
-const hexToRgba = (hex: any, opacity: any) => {
-  if (hex) {
-    hex = hex.replace(/^#/, '');
-    const [r, g, b] = [0, 2, 4].map((offset: any) => parseInt(hex.substring(offset, offset + 2), 16));
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-  }
-  return 'rgba(0, 0, 0, 0)';
-};
+const hexToRgba = (() => {
+  const cache = new Map();
+  return (hex: any, opacity: any) => {
+    const key = `${hex}-${opacity}`;
+    if (cache.has(key)) return cache.get(key);
+
+    if (hex) {
+      hex = hex.replace(/^#/, '');
+      const [r, g, b] = [0, 2, 4].map((offset: any) => parseInt(hex.substring(offset, offset + 2), 16));
+      const rgba = `rgba(${r}, ${g}, ${b}, ${opacity})`;
+      cache.set(key, rgba);
+      return rgba;
+    }
+    return 'rgba(0, 0, 0, 0)';
+  };
+})();
 
 export const Mask = () => {
   const { maskProperties } = useMask();
+  const { parcelAreaFrom, parcelAreaTo } = useParcelAreas();
+  const { builtAreaFrom, builtAreaTo } = useBuiltAreas();
 
   const geoJsonData = useMemo(() => {
     if (!maskProperties || maskProperties.length === 0) return null;
 
     const features = maskProperties.flatMap((maskProp: any) => {
       const baseGeometries = [];
-      let { geometry } = maskProp;
-      const { occupancy_rate, plot_ratio, plot_ratio_max, height, height_max, front_setback, colors } = maskProp.properties;
+      let { geometry, properties } = maskProp;
+      const {
+        area_carto, constructed_area = '', occupancy_rate = 1, plot_ratio_max = 1,
+        height = 10, height_max = 50, front_setback = 4, colors = '#FFFFFF'
+      } = properties;
+
+      if (area_carto <= parcelAreaFrom || area_carto >= parcelAreaTo) return [];
+
+      const constructedAreas = constructed_area.replace(/[{}]/g, '').split(',').map(Number);
+      const sumConstructedArea = constructedAreas.reduce((sum: any, val: any) => sum + val, 0);
+
+      if (sumConstructedArea < builtAreaFrom || sumConstructedArea > builtAreaTo) return [];
 
       const maxDensity = plot_ratio_max || 1;
       const baseHeight = height || 10;
@@ -42,7 +64,7 @@ export const Mask = () => {
         if (!currentGeometry || turf.area(currentGeometry) <= 0) break;
 
         const extrusionHeight = stepHeight * (i + 1);
-        const color = hexToRgba(colors || '#FFFFFF', 0.8);
+        const color = hexToRgba(colors || '#FFFFFF', 1);
 
         baseGeometries.push({
           type: 'Feature',
@@ -64,7 +86,7 @@ export const Mask = () => {
     });
 
     return features.length > 0 ? { type: 'FeatureCollection', features } : null;
-  }, [maskProperties]);
+  }, [maskProperties, parcelAreaFrom, parcelAreaTo, builtAreaFrom, builtAreaTo]);
 
   if (!geoJsonData) return null;
 
