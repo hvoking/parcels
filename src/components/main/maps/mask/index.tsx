@@ -61,7 +61,7 @@ export const Mask = () => {
       let currentGeometry = turf.buffer(geometry, -setbackDistance, { units: 'meters' });
 
       for (let i = 0; i < extrusionSteps; i++) {
-        if (!currentGeometry || turf.area(currentGeometry) <= 0) break;
+        if (!currentGeometry || turf.area(currentGeometry) <= 50) break;
 
         const extrusionHeight = stepHeight * (i + 1);
         const color = hexToRgba(colors || '#FFFFFF', 1);
