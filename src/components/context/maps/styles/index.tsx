@@ -10,22 +10,23 @@ export const useStyles = () => {
 }
 
 export const StylesProvider = ({children}: any) => {
-	const fetchData = async (tableName: string) => {
+	const fetchData = async (tableSchema: string, tableName: string) => {
 		const url = `
 	    	${process.env.REACT_APP_API_URL}/
-	    	style/
-	    	${tableName}
+	    	style
+	    	?table_schema=${tableSchema}
+	    	&table_name=${tableName}
 	    `.replace(/\s/g, '');
 	  	const res = await fetch(url);
 	    const receivedData = await res.json();
 	    return receivedData;
 	}
 
-	const getTilesUrl = (schemaName: any, tableName: any) => {
+	const getTilesUrl = (tableSchema: string, tableName: string) => {
 		const url = `
 	    	${process.env.REACT_APP_API_URL}
 	    	/tiles
-	    	?table_schema=${schemaName}
+	    	?table_schema=${tableSchema}
 	    	&table_name=${tableName}
 	    	&x={x}
 	    	&y={y}
