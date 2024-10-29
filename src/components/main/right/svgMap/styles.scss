@@ -1,0 +1,14 @@
+.svgmap-wrapper {
+	display: grid;
+	position: absolute;
+	z-index: 3;
+	top: 40px;
+	left: 10px;
+	width: 50px;
+	height: 80px;
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 5px;
+	border: 2px solid rgba(126, 126, 132, 1);
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

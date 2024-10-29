@@ -1,6 +1,7 @@
 // App imports
 import { Left } from './left';
 import { Maps } from './maps';
+import { Right } from './right';
 import { Wrapper } from './wrapper';
 import './styles.scss';
 
@@ -13,6 +14,7 @@ export const Main = () => (
       <div className="main">
         <Left/>
         <Maps/>
+        <Right/>
       </div>
     </Wrapper>
   </MainProvider>
