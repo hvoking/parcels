@@ -4,7 +4,7 @@ import './styles.scss';
 // Third-party imports
 import * as d3 from "d3";
 
-export const Bars = ({ data, title, name }: any) => {
+export const Bars = ({ data, name }: any) => {
 	if (!data) return <></>
 
 	const colors = data.reduce((total: any, curr: any) => {
@@ -24,23 +24,24 @@ export const Bars = ({ data, title, name }: any) => {
 
 	const sumOfValues = d3.sum(Object.values(currentDistribution));
 
+	const sortedData = Object.keys(currentDistribution).sort((a, b) => currentDistribution[b] - currentDistribution[a]);
+
 	return (
 		<div className="bars-wrapper-wrapper">
-			{Object.keys(currentDistribution).slice(0, 3).map((item: any) => {
+			{sortedData.slice(0, 4).map((item: any) => {
 				const currentPercent = currentDistribution[item] / sumOfValues;
 				const currentColor = colors[item];
 				return (
-					<div key={item} className="bars-wrapper">
-						<div>{item.toLowerCase()}</div>
-						<div className="bars">
-							<div 
-								style={{
-									width: `${currentPercent * 100}%` , 
-									backgroundColor: currentColor
-								}}
-							></div>
-							<div>{currentDistribution[item]}</div>
-						</div>
+					<div key={item} className="bars">
+						<div>{item}</div>
+						<div 
+							style={{
+								width: "25px", 
+								height: "20px",
+								backgroundColor: currentColor
+							}}
+						></div>
+						<div>{currentDistribution[item]}</div>
 					</div>
 				)
 			})}

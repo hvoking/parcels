@@ -5,8 +5,9 @@
 	border-radius: 20px;
 	padding-top: 5px;
 	padding-bottom: 10px;
-	grid-gap: 10px;
+	grid-gap: 5px;
 	overflow: hidden;
+	align-items: center;
 }
 .zone {
 	display: flex;
@@ -17,5 +18,5 @@
 	padding-right: 20px;
 }
 .zone-title {
-	color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 0.6);
 }

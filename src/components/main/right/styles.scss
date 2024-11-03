@@ -12,5 +12,6 @@
 	border-radius: 20px;
 	display: grid;
 	grid-template-rows: min-content auto;
-	height: 100%;
+	overflow: hidden;
+	align-items: center;
 }

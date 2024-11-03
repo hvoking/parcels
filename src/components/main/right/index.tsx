@@ -1,5 +1,5 @@
 // App imports
-import { Zone } from './zone';
+import { Info } from './info';
 import { Gauge } from './gauge';
 import { Bars } from './bars';
 import './styles.scss';
@@ -13,12 +13,15 @@ export const Right = () => {
 
 	return (
 		<div className="right-wrapper">
-			<Zone/>
+			<Info/>
 			<div className="right-gauge-wrapper">
-				<div className="title-wrapper-style">Zone</div>
-				<Gauge data={data} name="zone"/>
+				<div className="title-wrapper-style">Lots per zone</div>
+				<div style={{display: "grid", gridTemplateColumns: "2fr 3fr", height: "100%"}}>
+					<Bars data={data} name="zone"/>
+					<Gauge data={data} name="zone"/>
+				</div>
 			</div>
-			<Bars data={data} title="Zone" name="zone"/>
+			<div></div>
 		</div>
 	)
 }
