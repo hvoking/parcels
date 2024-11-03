@@ -52,7 +52,7 @@ export const Bars = ({ xScale, minBound, maxBound, innerWidth, innerHeight }: an
                         y={yScale(areasCount[item])}
                         width={currentWidth - 2}
                         height={innerHeight - yScale(areasCount[item])}
-                        fill={"rgba(126, 126, 132, 0.6)"}
+                        fill={"rgba(110, 128, 120, 1)"}
                     />
                 )
             })}

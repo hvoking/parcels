@@ -9,8 +9,8 @@ export const Foreground = ({ xScale, leftPosition, rightPosition, circleRadius, 
 			height={circleRadius}
 			fill={
 				activeForeground ? 
-				"rgba(255, 255, 255, 0.5)" : 
-				"rgba(255, 255, 255, 0.3)"
+				"rgba(80, 103, 116, 1)" : 
+				"rgba(80, 103, 116, 0.8)"
 			}
 		/>
 	)

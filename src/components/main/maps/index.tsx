@@ -8,6 +8,7 @@ import { Tiles } from './tiles';
 import { Avatar } from './avatar';
 import { Mask } from './mask';
 import { Circle } from './circle';
+import { Zones } from './zones';
 
 // Context imports
 import { useMapbox } from '../../context/filters/mapbox';
@@ -80,6 +81,7 @@ useEffect(() => {
         <Tiles/>
         <Avatar/>
         <Mask/>
+        <Zones/>
       </Map>
 
     </Wrapper>

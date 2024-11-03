@@ -30,7 +30,7 @@ export const Catchment = ({ polygonArea, polygon }: any) => {
 							cx={innerWidth / 2}
 							cy={ innerHeight / 2}
 							r={xScale(radiusPosition * 1000)}
-							fill={"rgba(126, 126, 132, 0.4)"}
+							fill={"rgba(66, 135, 245, 0.3)"}
 						/>
 					</SVGWrapper>
 					<div className="distance-info">
