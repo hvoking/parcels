@@ -1,25 +1,25 @@
 // React imports
 import { useState, useContext, createContext } from 'react';
 
-const SvgMapSizesContext: React.Context<any> = createContext(null)
+const CitiesSizesContext: React.Context<any> = createContext(null)
 
-export const useSvgMapSizes = () => {
+export const useCitiesSizes = () => {
 	return (
-		useContext(SvgMapSizesContext)
+		useContext(CitiesSizesContext)
 	)
 }
 
-export const SvgMapSizesProvider = ({children}: any) => {
+export const CitiesSizesProvider = ({children}: any) => {
 	const [ width, setWidth ] = useState<any>(null);
 	const [ height, setHeight ] = useState<any>(null);
 
-	const margin = {top: 20, bottom: 20, left: 20, right: 20}
+	const margin = {top: 10, bottom: 10, left: 0, right: 0}
 
 	const innerWidth = width - margin.right - margin.left;
 	const innerHeight = height - margin.top - margin.bottom;
 
 	return (
-		<SvgMapSizesContext.Provider value={{
+		<CitiesSizesContext.Provider value={{
 			margin,
 			width,
 			height,
@@ -29,8 +29,8 @@ export const SvgMapSizesProvider = ({children}: any) => {
 			innerHeight,
 		}}>
 			{children}
-		</SvgMapSizesContext.Provider>
+		</CitiesSizesContext.Provider>
 	)
 }
 
-SvgMapSizesContext.displayName = "SvgMapSizesContext";
+CitiesSizesContext.displayName = "CitiesSizesContext";

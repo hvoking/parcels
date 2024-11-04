@@ -4,6 +4,7 @@ import { BarsSizesProvider } from './bars';
 import { CircleSizesProvider } from './circle';
 import { RadiusSizesProvider } from './radius';
 import { GaugeSizesProvider } from './gauge';
+import { CitiesSizesProvider } from './cities';
 
 export const SizesProvider = ({children}: any) => {
   return (
@@ -12,7 +13,9 @@ export const SizesProvider = ({children}: any) => {
     <BarsSizesProvider>
     <RadiusSizesProvider>
     <GaugeSizesProvider>
+    <CitiesSizesProvider>
       {children}
+    </CitiesSizesProvider>
     </GaugeSizesProvider>
     </RadiusSizesProvider>
     </BarsSizesProvider>
