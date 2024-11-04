@@ -13,7 +13,7 @@ export const useEvents = () => {
 }
 
 export const EventsProvider = ({children}: any) => {
-		const { mapRef, marker, setMarker, setPlaceCoordinates } = useMapbox();
+		const { mapRef, marker, setMarker } = useMapbox();
 		
 		const [ isDragging, setIsDragging ] = useState(false);
 		const [ dragOffset, setDragOffset ] = useState({ x: 0, y: 0 });
@@ -58,10 +58,6 @@ export const EventsProvider = ({children}: any) => {
 
 	    const onDragEnd = useCallback(() => {
 	        setIsDragging(false);
-	        setPlaceCoordinates({
-                longitude: marker.longitude,
-                latitude: marker.latitude
-            });
 	    }, []);
 
 	return (

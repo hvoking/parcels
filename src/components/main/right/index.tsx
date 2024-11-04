@@ -2,7 +2,6 @@
 import { Info } from './info';
 import { Gauge } from './gauge';
 import { Bars } from './bars';
-import { Cities } from './cities';
 import './styles.scss';
 
 // Context imports
@@ -14,7 +13,6 @@ export const Right = () => {
 
 	return (
 		<div className="right-wrapper">
-			<Cities/>
 			<Info/>
 			<div className="right-gauge-wrapper">
 				<div className="title-wrapper-style">Lots per zone</div>
@@ -23,6 +21,7 @@ export const Right = () => {
 					<Gauge data={data} name="zone"/>
 				</div>
 			</div>
+			<div></div>
 		</div>
 	)
 }
