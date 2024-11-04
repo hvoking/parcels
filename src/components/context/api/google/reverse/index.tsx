@@ -34,7 +34,7 @@ export const ReverseGeocodingApiProvider = ({children}: any) => {
 	    setCurrentAddress(placeInformation);
 	  }
 	  placeCoordinates && fetchData();
-	}, [ placeCoordinates ]);
+	}, [ ]);
 
 	return (
 		<ReverseGeocodingApiContext.Provider value={{ currentAddress, setCurrentAddress }}>
